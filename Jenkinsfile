@@ -25,6 +25,11 @@ pipeline{
         sh 'docker push bhairavisanskriti/sanskriti-portfolio:$BUILD_NUMBER'
       }
     }
+    stage ('Update Manifest'){
+      steps {
+        build job: 'updateManifest', parameters: [string(name: 'BUILDNUMBER', value: 'env.BUILD_NUMBER')]
+      }
+    }
   }
   post {
     always {
