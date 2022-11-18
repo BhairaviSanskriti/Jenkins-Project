@@ -7,7 +7,7 @@ pipeline{
     stage ('Clone Repo'){
       steps {
         checkout scm
-        sh 'ls'
+        sh 'cat index.html'
       }
     }
     stage ('Build image'){
