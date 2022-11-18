@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: portfolio-webapp
+    env: test
+  name: portfolio-webapp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: portfolio
+      tier: dev
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+  template:
+    metadata:
+      labels:
+        app: portfolio
+        tier: dev
+    spec:
+      containers:
+      - image: bhairavisanskriti/sanskriti-portfolio:1
+        imagePullPolicy: IfNotPresent
+        name: portfolio-webapp
+        ports:
+        - containerPort: 80
+          protocol: TCP
