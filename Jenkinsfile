@@ -12,7 +12,7 @@ pipeline{
     }
     stage ('Build image'){
       steps {
-        sh 'docker build -t bhairavisanskriti/sanskriti-portfolio:${env.BUILD_NUMBER} .' 
+        sh 'docker build -t bhairavisanskriti/sanskriti-portfolio:${BUILD_NUMBER} .' 
       }
     }
     stage ('Docker login') {
