@@ -27,7 +27,7 @@ pipeline{
     }
     stage ('Update Manifest'){
       steps {
-        build job: 'updateManifest', parameters: [string(name: 'BUILDNUMBER', value: ${env.BUILD_NUMBER})]
+        build job: 'updateManifest', parameters: [string(name: 'BUILDNUMBER', value: ${BUILD_NUMBER})]
       }
     }
   }
