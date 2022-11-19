@@ -8,6 +8,7 @@ pipeline{
       steps {
         checkout scm
         sh 'cat index.html'
+        echo $BUILD_NUMBER
       }
     }
     stage ('Build image'){
