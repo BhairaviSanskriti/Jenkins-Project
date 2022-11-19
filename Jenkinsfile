@@ -22,7 +22,7 @@ pipeline{
     }
     stage ('Docker Push'){
       steps {
-        sh 'docker push bhairavisanskriti/sanskriti-portfolio:${env.BUILD_NUMBER}'
+        sh 'docker push bhairavisanskriti/sanskriti-portfolio:${BUILD_NUMBER}'
       }
     }
     stage ('Update Manifest'){
