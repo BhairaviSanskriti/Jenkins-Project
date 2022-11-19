@@ -12,7 +12,7 @@ pipeline{
     }
     stage ('Build image'){
       steps {
-        sh 'docker build -t bhairavisanskriti/sanskriti-portfolio:$BUILD_NUMBER .' 
+        sh 'docker build -t bhairavisanskriti/sanskriti-portfolio:${env.BUILD_NUMBER} .' 
       }
     }
     stage ('Docker login') {
@@ -22,12 +22,12 @@ pipeline{
     }
     stage ('Docker Push'){
       steps {
-        sh 'docker push bhairavisanskriti/sanskriti-portfolio:$BUILD_NUMBER'
+        sh 'docker push bhairavisanskriti/sanskriti-portfolio:${env.BUILD_NUMBER}'
       }
     }
     stage ('Update Manifest'){
       steps {
-        build job: 'updateManifest', parameters: [string(name: 'BUILDNUMBER', value: 'env.BUILD_NUMBER')]
+        build job: 'updateManifest', parameters: [string(name: 'BUILDNUMBER', value: ${env.BUILD_NUMBER})]
       }
     }
   }
